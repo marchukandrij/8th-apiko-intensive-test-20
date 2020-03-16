@@ -1,0 +1,224 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Roboto, sans-serif;
+    &::selection {
+        background-color: rgba(0, 0, 0, 0);
+    }
+}
+
+body {
+    background-color: orange;
+}
+
+.container {
+    &__title {
+        font-size: 50px;
+        color: black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        padding: 15px;
+        padding-top: 25px;
+        text-align: center;
+        &--strong {
+            color: white;
+            font-weight: bold;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+    }
+    &__search {
+        margin: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    &__content {
+        width: 100%;
+    }
+}
+
+.input {
+    &__text {
+        box-sizing: border-box;
+        height: 45px;
+        border: none;
+        border-radius: 3px;
+        box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5);
+        font-size: 16px;
+        padding-left: 15px;
+        padding-right: 15px;
+        width: 50vw;
+        min-width: 200px;
+        border: 1px solid white;
+        &:focus {
+            border: 1px solid black;
+        }
+        &::placeholder {
+            color: gray;
+        }
+        &::selection {
+            background-color: orange;
+        }
+    }
+    &__button {
+        height: 45px;
+        line-height: 45px;
+        text-align: center;
+        font-weight: bold;
+        font-size: 16px;
+        background-color: black;
+        color: white;
+        margin-left: 10px;
+        padding-left: 30px;
+        padding-right: 30px;
+        border-radius: 3px;
+        box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5);
+        &:hover {
+            background-color: lighten(black, 20%);
+        }
+        &:active {
+            background-color: darken(orange, 20%);
+        }
+    }
+}
+
+.trends {
+    padding: 15px;
+    padding-top: 30px;
+    padding-bottom: 60px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.movieSmall {
+    width: 20vw;
+    min-width: 300px;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    transition: transform 0.1s;
+    background-color: black;
+    &--superSmall {
+        width: 10vw;
+        min-width: 100px;
+        .movieSmall__title {
+            font-size: 10px !important;
+        }
+    }
+    &__image {
+        width: 100%;
+        display: block;
+    }
+    &__title {
+        height: 60px;
+        padding: 5px;
+        color: white;
+        font-size: 18px;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        &--big {
+            font-size: 25px;
+        }
+    }
+    &:hover {
+        transform: scale(1.05);
+    }
+}
+
+@mixin container {
+    width: 80%;
+    @media (max-width: 768px) {
+        width: 95%;
+    }
+}
+
+.movieBig {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    width: 100%;
+    height: 100%;
+    transform: scale(0);
+    opacity: 0;
+    background-color: rgba(0, 0, 0, 0.95);
+    transition: all 0.3s ease-out;
+
+    overflow-y: auto;
+    &__inner {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        align-items: center;
+    }
+    &--show {
+        transform: scale(1);
+        opacity: 1;
+    }
+    &__image {
+        width: 25%;
+        min-width: 200px;
+        margin-top: 20px;
+    }
+    &__description {
+        width: 60%;
+    }
+    &__title {
+        font-size: 50px;
+        color: white;
+        font-weight: bold;
+        margin-bottom: 20px;
+        margin-top: 20px;
+        @media (max-width: 560px) {
+            font-size: 36px;
+        }
+    }
+    &__overview {
+        font-size: 25px;
+        color: white;
+        @media (max-width: 560px) {
+            font-size: 18px;
+        }
+        margin-bottom: 20px;
+    }
+    &__recommend {
+        font-size: 12px;
+        color: orange;
+        font-style: italic;
+        margin-bottom: 20px;
+    }
+    &__recommendations {
+        width: 100%;
+        min-height: 200px;
+        margin-bottom: 20px;
+    }
+    &__rec-list {
+        display: flex;
+        overflow-x: auto;
+    }
+}
+
+.loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 60vh;
+    &__image {
+        width: 40px;
+        height: 40px;
+    }
+}
